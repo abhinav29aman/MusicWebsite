@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Songs</title>
+    <link rel ="stylesheet" href ="{{url_for('static', filename='project.css')}}" >
+    <link rel ="stylesheet" href ="{{url_for('static', filename='bootstrap.min.css')}}" >
+      <script src="{{url_for('static', filename='bootstrap.min.js')}}"></script>
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
+        <div class="container-fluid">
+          <a class="navbar-brand" >Hall Of Fame</a>
+          </div>
+          </nav>
+
+      {% if Score %}
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Well done!</strong> You scored {{Score}} points;
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+        
+      </div>
+      {% endif %}
+    <table class="table table-dark">
+        <thead>
+            <tr>
+             
+              <th scope="col">User</th>
+              <th scope="col">Score</th>
+              
+            </tr>
+          </thead>
+          <tbody>
+              {% for leader in Leaders %}
+              
+            <tr>
+        
+              <td>{{leader[0]}}</td>
+              <td>{{leader[1]}}</td>
+             
+             
+            </tr>
+        
+            {% endfor %}
+            </tbody>
+      </table>
+    
+</body>
+</html>

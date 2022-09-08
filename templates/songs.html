@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Songs</title>
+    <link rel ="stylesheet" href ="{{url_for('static', filename='project.css')}}" >
+    <link rel ="stylesheet" href ="{{url_for('static', filename='bootstrap.min.css')}}" >
+      <script src="{{url_for('static', filename='bootstrap.min.js')}}"></script>
+</head>
+<body>
+      {% if already %}
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>Already present!</strong> This song was already in your playlist.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      {% endif %}
+
+      {% if added %}
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Added!</strong> Song added to your playlist.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+        
+      </div>
+      {% endif %}
+    <table class="table table-dark">
+        <thead>
+            <tr>
+             
+              <th scope="col">Release Year</th>
+              <th scope="col">Artist</th>
+              <th scope="col">Song</th>
+              <th scope="col">Add to Playlist</th>
+            </tr>
+          </thead>
+          <tbody>
+              {% for song in Songs %}
+              
+            <tr>
+        
+              <td>{{song[2]}}</td>
+              <td>{{song[1]}}</td>
+              <td>{{song[0]}}</td>
+              <td><a class="btn btn-info"  href="{{url_for('add',sng =song[0],art=song[1],yr=song[2])}}">Add</a></td> 
+            </tr>
+        
+            {% endfor %}
+            </tbody>
+      </table>
+    
+</body>
+</html>
